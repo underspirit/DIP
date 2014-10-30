@@ -1,0 +1,11 @@
+function out = closestMethod(a,)
+    [m,n] = size(a);
+    p = m*s; q = n*s;
+    out = zeros(p,q);
+    for i = 1:p
+        for j = 1:q
+            x = i*
+        end
+    end
+    
+end
