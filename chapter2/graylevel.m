@@ -1,4 +1,5 @@
 function out = graylevel(I,n);
+% 使用for循环运算进行灰度级变换
 %tic;
 t0 = cputime;
 [c r] = size(I);

@@ -1,6 +1,6 @@
-function out = closestmethod(a,r,c)
+function out = nearestInter(a,r,c)
 %   利用最邻近算法对一个指定图像进行缩放操作
-%   closestmethod(a,r,c):
+%   nearestInterpolation(a,r,c):
 %   a为图像的像素矩阵,r为目标图像的行数,c为列数
     [m,n] = size(a);    
     tr = m/r; tc = n/c; %计算行和列的缩放比例

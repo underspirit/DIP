@@ -1,4 +1,5 @@
 function out = Cgraylevel(I,n)
+% 使用矩阵运算进行灰度级变换
 %tic;
 t0 = cputime;
 figure;subplot(1,2,1);imshow(I);title('original');
