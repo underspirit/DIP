@@ -1,0 +1,2 @@
+oriImg = imread('Fig0229(a)(tungsten_filament_shaded).tif'); %Ô­Í¼Ïñ
+shadowImg = imread('Fig0229(b)(tungsten_sensor_shading).tif'); %ÒõÓ°Í¼Ïñ

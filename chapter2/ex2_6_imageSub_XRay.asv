@@ -1,0 +1,7 @@
+mask = imread('Fig0228(a)(angiography_mask_image).tif'); %Ä£°åÍ¼Ïñ
+live = imread('Fig0228(b)(angiography_live_ image).tif'); %»îÌåÍ¼Ïñ
+sub = mask - live;
+figure;imshow(mask);
+figure;imshow(live);
+figure;imshow(sub);
+figure;histeq(sub); %

@@ -1,0 +1,13 @@
+oriImg = imread('Fig0232(a)(partial_body_scan).tif'); %Ô­Í¼Ïñ
+[m n] = size(oriImg);
+complementarySet = (2^8 - 1) - oriImg; %²¹¼¯Í¼Ïñ
+meanValue = 3 * mean(oriImg(:));
+for i = 1 : m
+    for j = 1 : n
+        if(oriImg(i,j) > meanValue)
+            oriImg(i,j) = 
+        end
+    end
+end
+figure;imshow(oriImg);
+figure;imshow(complementarySet);
