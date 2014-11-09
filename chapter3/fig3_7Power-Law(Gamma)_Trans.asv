@@ -1,0 +1,2 @@
+oriImg = imread('Fig0307(a)(intensity_ramp).tif');
+resultImg = 1 * uint8(oriImg.^0.4);

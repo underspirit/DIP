@@ -1,0 +1,27 @@
+oriImg = imread('Fig0235(c)(kidney_original).tif'); %原图像
+[m n] = size(oriImg);
+%定义邻域大小及邻域矩阵
+p = 41; q =41; 
+neighbor = ones(p, q);
+%填充图像
+fullImg = zeros(m + (p-1) / 2, n + (q-1) / 2);
+out = fullImg;
+r = (p+1) / 2; c = (q+1) / 2;   %求出原图矩阵在填充图中的起始坐标
+fullImg(r : m - 1 + r , c : n - 1 + c) = oriImg;
+size(fullImg)
+%在每一个位置进行邻域操作
+temp = zeros(p, q);
+for i = r :  m - 1 + r
+    for j = c : n - 1 + c
+        %计算出邻域覆盖区域的起始坐标
+        nr = i - (p - 1) / 2; nc = j - (q - 1) / 2;
+        mask = fullImg(nr : i + (p - 1) / 2 , nc : j + q - 1);
+        temp = neighbor .* mask;
+        out(i, j) = sum(temp(:));
+    end
+end
+out = out(r : m - 1 + r , c : n - 1 + c);
+out = uint8(out ./ (p * q));
+
+figure;imshow(oriImg);
+figure;imshow(out);
