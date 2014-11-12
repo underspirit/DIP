@@ -9,7 +9,6 @@ imshow(A);title('原始图像');
 
 for i=8:-1:1
     eval(['A_bitplane' num2str(i) '= bitshift(bitget(A,' num2str(i) '),' num2str(i) '-1);']);
-    eval(['A_bitplane' num2str(i) '= bitshift(bitget(A,' num2str(i) '),' num2str(i) '-1);']);
     subplot(3, 3, 9-i+1);
     eval(['imshow(A_bitplane' num2str(i) ');']);
     title(['位平面 ' num2str(i)]);
