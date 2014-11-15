@@ -20,7 +20,7 @@ for i = 2 : m+1
         temp = fullOriImg(i-1:i+1, j-1:j+1);    %提取出待处理的一个邻域
         tMean = mean((temp(:)));
         tVar = sum((temp(:)-mean(temp(:))).^2)/length(temp(:));
-        if(tMean <= k0 * gMean && tVar >= k1 * gVar && tVar <= k2 * gVar)
+        if(tMean <= k0 * gMean && tVar >= k1 * gVar && tVar <= k2 * gVar)   %对符合条件的点进行处理
             fullOriImg2(i, j) = E * fullOriImg(i, j); 
         end
     end

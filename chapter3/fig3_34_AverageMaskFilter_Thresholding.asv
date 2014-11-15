@@ -1,0 +1,8 @@
+oriImg = imread('Fig0334(a)(hubble-original).tif'); %原图像
+out15 = SmoothingLinearFilter(oriImg, 15);  %先进行均值滤波
+outt = graylevel(out15, 2)
+
+figure;
+subplot(131);imshow(oriImg);
+subplot(132);imshow(out15);
+subplot(133);imshow(out5);
