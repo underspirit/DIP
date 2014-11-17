@@ -1,0 +1,8 @@
+function out = scalingImage(oriImg, g_min, g_max)
+% scalingImage 对给定图像进行灰度值标定到给定范围
+% oriImg, g_min, g_max 分别表示原图像,标定的下限和上限
+K = g_max - g_min;
+fm = f - 
+out = g_min + 
+
+end
