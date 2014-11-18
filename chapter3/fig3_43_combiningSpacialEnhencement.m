@@ -1,0 +1,27 @@
+%使用混合空间增强法
+clear;clc;
+oriImg = imread('Fig0343(a)(skeleton_orig).tif'); %原图像
+%1.经Laplace滤波(b)模板,中心为整数的模板
+laplaceImg = -1 * laplaceFiltering(oriImg, 'b');    %此时模板中心为负数,需乘以 -1 变为 正
+
+%2.原图与laplace图相加
+addLapImg = double(oriImg) + laplaceImg;    %模板中心为正,这里则相加.  为毛模板中心为正负会有区别???!
+
+%3.sobel算子处理
+outx = sobelFilter(oriImg, 'x');
+outy = sobelFilter(oriImg, 'y');
+sobelImg = abs(outx) + abs(outy);   %绝对值相加得梯度幅值
+
+%使用5*5的均值滤波sobel图像
+h = ones(5, 5) ./ 25;
+avgImg = myImgFilter(sobelImg, h);
+
+
+figure; imshow(oriImg);
+figure; imshow(uint8(scalingImage(laplaceImg, 0, 255)));
+figure; imshow(uint8(addLapImg));
+figure; imshow(uint8((sobelImg)));
+%这里最后到底是用标定处理图片,还是直接转成uint8???!!! 该例直接转成uint8与书中图像结果更像
+% figure; imshow(uint8(scalingImage(sobelImg, 0, 255)));    
+figure; imshow(uint8((avgImg)));
+% figure; imshow(uint8(scalingImage(avgImg, 0, 255)));

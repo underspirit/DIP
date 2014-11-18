@@ -9,7 +9,7 @@ outb_Scaled = uint8(scallingImage(outb, 0, 255));
 %原图与a处理过的图像叠加
 outa_add = double(oriImg) - outa;    %因为laplace模板使用的是中间系数为负数,所以是减法
 
-%注意,滤波后的图像outa和outb中都是double类型,包含了负值,应该将oriImg转成double与滤波后的图像运算
+%注意,滤波后的图像outa和outb中都是double类型,包含了负值,应该将oriImg转成double与滤波后的图像进行运算
 %而不是将outa/outb转成uint8再与oriImg运算,因为这样会首先将outa/outb中的负值变成0
 
 %原图与b处理过的图像叠加
