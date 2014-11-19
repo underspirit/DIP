@@ -12,10 +12,20 @@ outx = sobelFilter(oriImg, 'x');
 outy = sobelFilter(oriImg, 'y');
 sobelImg = abs(outx) + abs(outy);   %绝对值相加得梯度幅值
 
-%
+%4.使用5*5的均值滤波sobel图像
+h = ones(5, 5) ./ 25;
+avgImg = myImgFilter(sobelImg, h);
+
+%4.laplace图像与均值滤波后的图像相乘
+compImg = add .* avgImg;
 
 
 figure; imshow(oriImg);
 figure; imshow(uint8(scalingImage(laplaceImg, 0, 255)));
 figure; imshow(uint8(addLapImg));
-figure; imshow(uint8(sobelImg));
+figure; imshow(uint8((sobelImg)));
+%这里最后到底是用标定处理图片,还是直接转成uint8???!!! 该例直接转成uint8与书中图像结果更像
+% figure; imshow(uint8(scalingImage(sobelImg, 0, 255)));    
+figure; imshow(uint8((avgImg)));
+% figure; imshow(uint8(scalingImage(avgImg, 0, 255)));
+figure; imshow(uint8(compImg));

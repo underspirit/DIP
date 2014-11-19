@@ -12,10 +12,18 @@ outx = sobelFilter(oriImg, 'x');
 outy = sobelFilter(oriImg, 'y');
 sobelImg = abs(outx) + abs(outy);   %绝对值相加得梯度幅值
 
-%使用5*5的均值滤波sobel图像
+%4.使用5*5的均值滤波sobel图像
 h = ones(5, 5) ./ 25;
 avgImg = myImgFilter(sobelImg, h);
 
+%4.laplace图像与均值滤波后的图像相乘
+compImg = addLapImg .* avgImg;
+
+%5.乘积图像与原图像求和
+sumImg = scalingImage(compImg, 0, 255) + oriImg;    %效果与书上不同...
+
+%6.使用幂律变换 r=0.5,c=1
+resultImg = 1 * double(sumImg).^(0.5);   %效果与书上不同...
 
 figure; imshow(oriImg);
 figure; imshow(uint8(scalingImage(laplaceImg, 0, 255)));
@@ -25,3 +33,12 @@ figure; imshow(uint8((sobelImg)));
 % figure; imshow(uint8(scalingImage(sobelImg, 0, 255)));    
 figure; imshow(uint8((avgImg)));
 % figure; imshow(uint8(scalingImage(avgImg, 0, 255)));
+figure; imshow(scalingImage(compImg, 0, 255));
+figure; imshow(sumImg);
+figure; imshow(scalingImage(resultImg, 0, 255));
+
+
+
+
+
+
